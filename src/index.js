@@ -5,6 +5,8 @@ const { PORT } = require("./config/serverConfig");
 
 const apiRoutes = require("./routes/index");
 
+const UserService = require("./services/user-service");
+
 const app = express();
 
 const prepareAndStartServer = () => {

@@ -25,6 +25,30 @@ const create = async (req, res) => {
   }
 };
 
+const signIn = async (req, res) => {
+  try {
+    const response = await userService.signIn(
+      req.body.email,
+      req.body.password
+    );
+    return res.status(200).json({
+      success: true,
+      data: response,
+      err: {},
+      message: "Successfullt signed in",
+    });
+  } catch (error) {
+    console.log("Something went wrong in the controller layer");
+    return res.status(500).json({
+      data: {},
+      message: "Something went wrong",
+      success: false,
+      err: error,
+    });
+  }
+};
+
 module.exports = {
   create,
+  signIn,
 };

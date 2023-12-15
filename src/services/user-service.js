@@ -45,7 +45,7 @@ class UserService {
         throw { error: "Invalid token" };
       }
       // doing an extra check -> what if the user deleted his id before token expiry
-      const user = this.userRepository.getById(response.id);
+      const user = await this.userRepository.getById(response.id);
       if (!user) {
         throw { error: "No user with the corresponding token exist" };
       }
